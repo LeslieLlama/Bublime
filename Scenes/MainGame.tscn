@@ -1,10 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmbm5i2wxwi4d"]
+[gd_scene load_steps=5 format=3 uid="uid://cmbm5i2wxwi4d"]
 
 [ext_resource type="PackedScene" uid="uid://xh4wteq4jqc5" path="res://Scenes/player.tscn" id="1_84xqw"]
 [ext_resource type="PackedScene" uid="uid://db6q8ql0fqkvs" path="res://Scenes/ui.tscn" id="2_srcq2"]
+[ext_resource type="Script" path="res://Scenes/camera_zone.gd" id="3_1ve3w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o0ppl"]
+size = Vector2(999, 1000)
 
 [node name="MainGame" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_84xqw")]
+position = Vector2(501, 503)
 
 [node name="UI" parent="." instance=ExtResource("2_srcq2")]
+
+[node name="CameraZone1" type="Area2D" parent="."]
+script = ExtResource("3_1ve3w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZone1"]
+position = Vector2(502.5, 502)
+shape = SubResource("RectangleShape2D_o0ppl")
+
+[node name="CameraZone2" type="Area2D" parent="."]
+position = Vector2(1006, 0)
+script = ExtResource("3_1ve3w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZone2"]
+position = Vector2(502.5, 502)
+shape = SubResource("RectangleShape2D_o0ppl")
+
+[connection signal="body_entered" from="CameraZone1" to="CameraZone1" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraZone2" to="CameraZone2" method="_on_body_entered"]

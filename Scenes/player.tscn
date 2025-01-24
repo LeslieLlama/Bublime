@@ -1,14 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://xh4wteq4jqc5"]
+[gd_scene load_steps=6 format=3 uid="uid://xh4wteq4jqc5"]
 
 [ext_resource type="Script" path="res://Scenes/PlayerMovement.gd" id="1_iolvt"]
 [ext_resource type="PackedScene" uid="uid://dnqvkt8q7njgu" path="res://Scenes/bubble_projectile.tscn" id="2_y87s2"]
 [ext_resource type="Texture2D" uid="uid://rrlixygeg2p8" path="res://icon.svg" id="3_e5is4"]
+[ext_resource type="Script" path="res://Scenes/player_camera.gd" id="4_ebh4y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_le6j4"]
 radius = 53.1507
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-position = Vector2(510, 490)
 collision_mask = 0
 script = ExtResource("1_iolvt")
 bubble_projectile = ExtResource("2_y87s2")
@@ -20,3 +20,8 @@ texture = ExtResource("3_e5is4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_le6j4")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_smoothed = true
+position_smoothing_enabled = true
+script = ExtResource("4_ebh4y")
