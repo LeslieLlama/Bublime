@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnqvkt8q7njgu"]
+
+[ext_resource type="Script" path="res://Scenes/bubble_projectile.gd" id="1_ddjb8"]
+[ext_resource type="Texture2D" uid="uid://rrlixygeg2p8" path="res://icon.svg" id="1_r8gu4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5ao5n"]
+radius = 20.0
+
+[node name="BubbleProjectile" type="Area2D"]
+script = ExtResource("1_ddjb8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.292939, 0.336262, 0.843589, 1)
+scale = Vector2(0.320313, 0.320313)
+texture = ExtResource("1_r8gu4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5ao5n")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
