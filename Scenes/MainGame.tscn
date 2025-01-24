@@ -1,23 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmbm5i2wxwi4d"]
+[gd_scene load_steps=3 format=3 uid="uid://cmbm5i2wxwi4d"]
 
-[ext_resource type="Script" path="res://Scenes/PlayerMovement.gd" id="1_kp8dx"]
-[ext_resource type="Texture2D" uid="uid://rrlixygeg2p8" path="res://icon.svg" id="1_p0pns"]
-[ext_resource type="PackedScene" uid="uid://dnqvkt8q7njgu" path="res://Scenes/bubble_projectile.tscn" id="2_pddvl"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_le6j4"]
-radius = 53.1507
+[ext_resource type="PackedScene" uid="uid://xh4wteq4jqc5" path="res://Scenes/player.tscn" id="1_84xqw"]
+[ext_resource type="PackedScene" uid="uid://db6q8ql0fqkvs" path="res://Scenes/ui.tscn" id="2_srcq2"]
 
 [node name="MainGame" type="Node2D"]
 
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(510, 490)
-script = ExtResource("1_kp8dx")
-bubble_projectile = ExtResource("2_pddvl")
+[node name="Player" parent="." instance=ExtResource("1_84xqw")]
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-position = Vector2(-1, -2.5)
-scale = Vector2(0.59375, 0.570313)
-texture = ExtResource("1_p0pns")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("CircleShape2D_le6j4")
+[node name="UI" parent="." instance=ExtResource("2_srcq2")]

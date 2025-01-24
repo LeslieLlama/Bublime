@@ -6,7 +6,11 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_5ao5n"]
 radius = 20.0
 
-[node name="BubbleProjectile" type="Area2D"]
+[node name="BubbleProjectile" type="RigidBody2D"]
+collision_mask = 0
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 5
 script = ExtResource("1_ddjb8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -19,4 +23,5 @@ shape = SubResource("CircleShape2D_5ao5n")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

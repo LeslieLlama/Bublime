@@ -10,6 +10,7 @@ var ammoCount : int = 0
 var maxAmmoCount : int = 9
 
 func _ready():
+	Signals.bubble_collected.connect(collect_bubble)
 	ammoCount = maxAmmoCount
 
 func get_move_input(): 
@@ -56,4 +57,7 @@ func change_size(is_plus : bool):
 		scale.x -= 0.05
 		scale.y -= 0.05
 	
+func collect_bubble(_position):
+	change_size(true)
+	ammoCount += 1
 	
