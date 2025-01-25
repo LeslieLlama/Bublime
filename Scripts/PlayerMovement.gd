@@ -8,7 +8,7 @@ var stunTime = 0.5
 @export var bubble_projectile : PackedScene
 
 var ammoCount : int = 0
-var maxAmmoCount : int = 9
+var maxAmmoCount : int = 3
 var is_stunned : bool = false
 
 var sprite2D 
@@ -52,12 +52,12 @@ func _physics_process(delta):
 		shoot_bubble(shoot_direction)
 
 func change_size(is_plus : bool):
+	sprite2D.frame = (7-ammoCount) #8 total frames, so starting at 0 it's 7
+	$CollisionShape2D.shape.radius = 15 + (3.5*(ammoCount))
 	if is_plus == true:
-		scale.x += 0.05
-		scale.y += 0.05
+		pass
 	else:
-		scale.x -= 0.05
-		scale.y -= 0.05
+		pass
 	
 func shoot_bubble(shoot_direction):
 	if ammoCount >= 1:
