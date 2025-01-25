@@ -15,6 +15,7 @@ var sprite2D
 
 func _ready():
 	Signals.bubble_collected.connect(collect_bubble)
+	Signals.extra_bubble_collected.connect(collect_extra_bubble)
 	Signals.new_room_entered.connect(reset_bubble_split)
 	Signals.player_damaged.connect(TakeDamage)
 	
@@ -70,8 +71,15 @@ func shoot_bubble(shoot_direction):
 		Signals.emit_signal("popup_message", "Too Small!", position, Color.WHITE)
 
 func collect_bubble(_position):
+	if ammoCount <= maxAmmoCount:
+		change_size(true)
+		ammoCount += 1
+	
+func collect_extra_bubble():
+	maxAmmoCount += 1
 	change_size(true)
 	ammoCount += 1
+	Signals.emit_signal("popup_message", "+1 Bubble!", position, Color.WHITE)
 	
 func reset_bubble_split(_area, _room_name):
 	#currently don't need a "kill all" function on the bubble projectiles since they die on screen exit

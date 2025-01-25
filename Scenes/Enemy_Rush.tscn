@@ -1,17 +1,53 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgjcm6jpt5471"]
+[gd_scene load_steps=9 format=3 uid="uid://bgjcm6jpt5471"]
 
-[ext_resource type="Texture2D" uid="uid://rrlixygeg2p8" path="res://icon.svg" id="1_ry7jc"]
 [ext_resource type="Script" path="res://Scripts/enemy_rush.gd" id="1_ujmnf"]
+[ext_resource type="Texture2D" uid="uid://bwrpy64357xip" path="res://Sprites/SpikeEnemy.png" id="2_fxvje"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lej3x"]
 size = Vector2(71, 67)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_3a6rg"]
+atlas = ExtResource("2_fxvje")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lexns"]
+atlas = ExtResource("2_fxvje")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aitg3"]
+atlas = ExtResource("2_fxvje")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jtg0"]
+atlas = ExtResource("2_fxvje")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8sx7h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3a6rg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lexns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aitg3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jtg0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
 [node name="Enemy" type="RigidBody2D" groups=["enemy"]]
-modulate = Color(0.882627, 0.127322, 0.101109, 1)
 collision_layer = 2
 collision_mask = 3
 mass = 100.0
 gravity_scale = 0.0
+lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 3
 linear_damp = 1.0
@@ -21,9 +57,13 @@ script = ExtResource("1_ujmnf")
 position = Vector2(0.5, 1.5)
 shape = SubResource("RectangleShape2D_lej3x")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.582031, 0.554688)
-texture = ExtResource("1_ry7jc")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3.9, 3.9)
+sprite_frames = SubResource("SpriteFrames_8sx7h")
+autoplay = "default"
+frame = 3
+frame_progress = 0.9063
 
 [node name="MovementTick" type="Timer" parent="."]
 autostart = true

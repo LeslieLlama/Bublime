@@ -6,6 +6,7 @@ var speed : float = 60000
 var player : CharacterBody2D
 var active_area : String
 var is_active : bool
+var direction : Vector2
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	health = maxHealth
@@ -34,13 +35,13 @@ func _check_for_active(currentArea : Area2D, name : String):
 	
 func _movement():
 	if is_active == true:
-		var direction = Vector2(position - player.position).normalized()
+		direction = Vector2(position - player.position).normalized()
 		apply_impulse(-direction * speed, Vector2.ZERO)
 	$MovementTick.start()
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):
-		Signals.emit_signal("player_damaged", Vector2.LEFT)
+		Signals.emit_signal("player_damaged", -direction)
 	if body.is_in_group("player_bullet"):
 		print(str(health))
 		health -= 1
