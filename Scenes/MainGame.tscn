@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmbm5i2wxwi4d"]
+[gd_scene load_steps=8 format=3 uid="uid://cmbm5i2wxwi4d"]
 
 [ext_resource type="PackedScene" uid="uid://xh4wteq4jqc5" path="res://Scenes/player.tscn" id="1_84xqw"]
 [ext_resource type="Script" path="res://Scripts/main_game.gd" id="1_anap5"]
 [ext_resource type="PackedScene" uid="uid://db6q8ql0fqkvs" path="res://Scenes/ui.tscn" id="2_srcq2"]
 [ext_resource type="Script" path="res://Scripts/camera_zone.gd" id="3_1ve3w"]
+[ext_resource type="PackedScene" uid="uid://bgjcm6jpt5471" path="res://Scenes/Enemy_Rush.tscn" id="5_mg160"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o0ppl"]
 size = Vector2(999, 1000)
@@ -14,17 +15,13 @@ size = Vector2(997, 2131)
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_anap5")
 
-[node name="Player" parent="." instance=ExtResource("1_84xqw")]
-position = Vector2(501, 503)
-
-[node name="UI" parent="." instance=ExtResource("2_srcq2")]
-
 [node name="CameraZone1" type="Area2D" parent="."]
 script = ExtResource("3_1ve3w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZone1"]
 position = Vector2(502.5, 502)
 shape = SubResource("RectangleShape2D_o0ppl")
+debug_color = Color(1, 0.760784, 0.592157, 0.419608)
 
 [node name="CameraZone2" type="Area2D" parent="."]
 position = Vector2(1006, 0)
@@ -33,6 +30,7 @@ script = ExtResource("3_1ve3w")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZone2"]
 position = Vector2(502.5, 502)
 shape = SubResource("RectangleShape2D_o0ppl")
+debug_color = Color(1, 0.760229, 0.593431, 0.42)
 
 [node name="CameraZone3" type="Area2D" parent="."]
 position = Vector2(-1, -1007)
@@ -41,6 +39,15 @@ script = ExtResource("3_1ve3w")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZone3"]
 position = Vector2(501.5, -63.5)
 shape = SubResource("RectangleShape2D_tu54i")
+debug_color = Color(1, 0.760784, 0.592157, 0.419608)
+
+[node name="Player" parent="." instance=ExtResource("1_84xqw")]
+position = Vector2(501, 503)
+
+[node name="Enemy" parent="." instance=ExtResource("5_mg160")]
+position = Vector2(233, 499)
+
+[node name="UI" parent="." instance=ExtResource("2_srcq2")]
 
 [connection signal="body_entered" from="CameraZone1" to="CameraZone1" method="_on_body_entered"]
 [connection signal="body_entered" from="CameraZone2" to="CameraZone2" method="_on_body_entered"]

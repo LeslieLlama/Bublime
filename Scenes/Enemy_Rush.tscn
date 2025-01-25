@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgjcm6jpt5471"]
+
+[ext_resource type="Texture2D" uid="uid://rrlixygeg2p8" path="res://icon.svg" id="1_ry7jc"]
+[ext_resource type="Script" path="res://Scripts/enemy_rush.gd" id="1_ujmnf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lej3x"]
+size = Vector2(71, 67)
+
+[node name="Enemy" type="RigidBody2D"]
+modulate = Color(0.882627, 0.127322, 0.101109, 1)
+collision_layer = 2
+collision_mask = 3
+mass = 100.0
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 3
+linear_damp = 1.0
+script = ExtResource("1_ujmnf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 1.5)
+shape = SubResource("RectangleShape2D_lej3x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.582031, 0.554688)
+texture = ExtResource("1_ry7jc")
+
+[node name="MovementTick" type="Timer" parent="."]
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="MovementTick" to="." method="_movement"]

@@ -9,7 +9,6 @@
 radius = 53.1507
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-collision_mask = 0
 script = ExtResource("1_iolvt")
 bubble_projectile = ExtResource("2_y87s2")
 

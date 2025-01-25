@@ -29,7 +29,9 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 	
 func become_pickup():
 	$Sprite2D.modulate = Color.WHITE
+	collision_layer = 0b00000000_00000000_00000000_00000100
 	collision_mask = 0b00000000_00000000_00000000_00000001
+	
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):
