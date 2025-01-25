@@ -115,5 +115,7 @@ func _random_direction():
 	return output
 	
 func _death():
-	print("player has died")
+	Signals.emit_signal("player_dead")
+	$".".visible = false
+	collision_layer = 0b00000000_00000000_00000000_00000000
 	
