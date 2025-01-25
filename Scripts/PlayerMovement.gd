@@ -11,6 +11,7 @@ var maxAmmoCount : int = 9
 
 func _ready():
 	Signals.bubble_collected.connect(collect_bubble)
+	Signals.new_room_entered.connect(reset_bubble_split)
 	ammoCount = maxAmmoCount
 
 func get_move_input(): 
@@ -47,7 +48,7 @@ func _physics_process(delta):
 			change_size(false)
 			
 		else:
-			print("out of ammo!")
+			Signals.emit_signal("popup_message", "Too Small!", position, Color.WHITE)
 
 func change_size(is_plus : bool):
 	if is_plus == true:
@@ -60,4 +61,9 @@ func change_size(is_plus : bool):
 func collect_bubble(_position):
 	change_size(true)
 	ammoCount += 1
+	
+func reset_bubble_split():
+	#currently don't need a "kill all" function on the bubble projectiles since they die on screen exit
+	for m in maxAmmoCount-ammoCount:
+		change_size(true)
 	
