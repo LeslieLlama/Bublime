@@ -3,7 +3,7 @@ extends Camera2D
 func _ready():
 	Signals.new_room_entered.connect(_on_new_room_entered)
 
-func _on_new_room_entered(area: Area2D) -> void:
+func _on_new_room_entered(area: Area2D, _room_name) -> void:
 	var collision_shape = area.get_node("CollisionShape2D")
 	var size = collision_shape.shape.extents*2
 	

@@ -17,8 +17,11 @@ func _ready():
 	Signals.bubble_collected.connect(collect_bubble)
 	Signals.new_room_entered.connect(reset_bubble_split)
 	Signals.player_damaged.connect(TakeDamage)
+	
 	ammoCount = maxAmmoCount
 	sprite2D = $Sprite2D
+	await get_tree().create_timer(0.01).timeout
+	Signals.emit_signal("get_player", self)
 
 func get_move_input(): 
 	var input = Vector2() 
@@ -70,7 +73,7 @@ func collect_bubble(_position):
 	change_size(true)
 	ammoCount += 1
 	
-func reset_bubble_split(_area):
+func reset_bubble_split(_area, _room_name):
 	#currently don't need a "kill all" function on the bubble projectiles since they die on screen exit
 	for m in maxAmmoCount-ammoCount:
 		change_size(true)

@@ -4,13 +4,26 @@ var health : int = 0
 var maxHealth : int = 3
 var speed : float = 60000
 var player : CharacterBody2D
+var active_area : String
+var is_active : bool
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	health = maxHealth
 	Signals.get_player.connect(_assign_player)
+	Signals.new_room_entered.connect(_check_for_active)
+	active_area = get_parent().name
 	
 func _assign_player(p : CharacterBody2D):
 	player = p
+	print("player assigned")
+
+
+func _check_for_active(currentArea : Area2D, name : String):
+	if name == active_area:
+		is_active = true
+		print("enemy activated")
+	else: 
+		is_active = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -20,8 +33,9 @@ func _assign_player(p : CharacterBody2D):
 
 	
 func _movement():
-	var direction = Vector2(position - player.position).normalized()
-	apply_impulse(-direction * speed, Vector2.ZERO)
+	if is_active == true:
+		var direction = Vector2(position - player.position).normalized()
+		apply_impulse(-direction * speed, Vector2.ZERO)
 	$MovementTick.start()
 
 func _on_body_entered(body):

@@ -30,6 +30,7 @@ window/stretch/aspect="expand"
 
 player="tag for the player"
 player_bullet=""
+enemy=""
 
 [input]
 
