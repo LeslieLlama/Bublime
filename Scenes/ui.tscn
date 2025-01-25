@@ -1,18 +1,41 @@
-[gd_scene format=3 uid="uid://db6q8ql0fqkvs"]
+[gd_scene load_steps=2 format=3 uid="uid://db6q8ql0fqkvs"]
+
+[ext_resource type="Script" path="res://Scenes/ui.gd" id="1_81kql"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_81kql")
+
+[node name="TutorialScreen1" type="Control" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Title" type="Label" parent="."]
-layout_mode = 0
+[node name="Title" type="Label" parent="TutorialScreen1"]
 offset_right = 1000.0
 offset_bottom = 476.0
 theme_override_font_sizes/font_size = 100
 text = "Bublime"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Label" type="Label" parent="TutorialScreen1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 102.0
+offset_top = 569.0
+offset_right = 906.0
+offset_bottom = 776.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Press WASD to start "
+horizontal_alignment = 1
