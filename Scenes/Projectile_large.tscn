@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://bklio0ygit0n3"]
+
+[ext_resource type="PackedScene" uid="uid://bgjcm6jpt5471" path="res://Scenes/Enemy_Rush.tscn" id="1_u7185"]
+[ext_resource type="Script" path="res://Scenes/projectile_large.gd" id="2_5knqc"]
+[ext_resource type="Texture2D" uid="uid://bechkgb7rjswa" path="res://Sprites/ProjectilesLarge-1.png.png" id="2_q1nwy"]
+[ext_resource type="Texture2D" uid="uid://da8nxp8xbuenb" path="res://Sprites/ProjectilesLarge-2.png.png" id="3_exbf3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0jrnv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_q1nwy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_exbf3")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="projectile_large" instance=ExtResource("1_u7185")]
+collision_mask = 1
+script = ExtResource("2_5knqc")
+
+[node name="Sprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_0jrnv")
+autoplay = ""
+frame = 0
+frame_progress = 0.0

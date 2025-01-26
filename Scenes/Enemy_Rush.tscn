@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bwrpy64357xip" path="res://Sprites/SpikeEnemy.png" id="2_fxvje"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lej3x"]
-size = Vector2(71, 67)
+size = Vector2(70, 74)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3a6rg"]
 atlas = ExtResource("2_fxvje")
@@ -54,7 +54,6 @@ linear_damp = 1.0
 script = ExtResource("1_ujmnf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 1.5)
 shape = SubResource("RectangleShape2D_lej3x")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]

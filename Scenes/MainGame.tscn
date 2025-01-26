@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://cmbm5i2wxwi4d"]
+[gd_scene load_steps=17 format=4 uid="uid://cmbm5i2wxwi4d"]
 
 [ext_resource type="PackedScene" uid="uid://xh4wteq4jqc5" path="res://Scenes/player.tscn" id="1_84xqw"]
 [ext_resource type="Script" path="res://Scripts/main_game.gd" id="1_anap5"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://Scripts/camera_zone.gd" id="3_1ve3w"]
 [ext_resource type="PackedScene" uid="uid://bgjcm6jpt5471" path="res://Scenes/Enemy_Rush.tscn" id="5_mg160"]
 [ext_resource type="Texture2D" uid="uid://crbt2hrmqyxq8" path="res://Sprites/AquaTileSet.png" id="6_5jvg1"]
+[ext_resource type="PackedScene" uid="uid://bklio0ygit0n3" path="res://Scenes/Projectile_large.tscn" id="7_7cjxx"]
+[ext_resource type="PackedScene" uid="uid://3ouffd8ttdm8" path="res://Scenes/enemy_star_king.tscn" id="7_jnb44"]
 [ext_resource type="PackedScene" uid="uid://dnqvkt8q7njgu" path="res://Scenes/bubble_projectile.tscn" id="7_r3b8w"]
 [ext_resource type="FontFile" uid="uid://c2u6mgva0cwwo" path="res://Pixelout Personal Use Only.ttf" id="7_s3fqj"]
 [ext_resource type="FontFile" uid="uid://ck2g4k8chw7b0" path="res://Daydream.ttf" id="8_ppxw5"]
@@ -119,6 +121,9 @@ position = Vector2(502.5, 502)
 shape = SubResource("RectangleShape2D_o0ppl")
 debug_color = Color(1, 0.760784, 0.592157, 0.419608)
 
+[node name="Enemy" parent="Room1" instance=ExtResource("7_7cjxx")]
+position = Vector2(740, 697)
+
 [node name="Room2" type="Node2D" parent="."]
 
 [node name="CameraZone2" type="Area2D" parent="Room2"]
@@ -130,8 +135,8 @@ position = Vector2(502.5, 502)
 shape = SubResource("RectangleShape2D_o0ppl")
 debug_color = Color(1, 0.760229, 0.593431, 0.42)
 
-[node name="Enemy2" parent="Room2" instance=ExtResource("5_mg160")]
-position = Vector2(1594, 562)
+[node name="Enemy" parent="Room2" instance=ExtResource("5_mg160")]
+position = Vector2(1580, 421)
 
 [node name="Room11" type="Node2D" parent="."]
 position = Vector2(1000, 0)
@@ -156,8 +161,8 @@ position = Vector2(502, 6)
 shape = SubResource("RectangleShape2D_tu54i")
 debug_color = Color(1, 0.760784, 0.592157, 0.419608)
 
-[node name="Enemy" parent="Room3" instance=ExtResource("5_mg160")]
-position = Vector2(410, -361)
+[node name="StarKing" parent="Room3" instance=ExtResource("7_jnb44")]
+position = Vector2(476, -1012)
 
 [node name="Room4" type="Node2D" parent="."]
 position = Vector2(-1000, -1000)

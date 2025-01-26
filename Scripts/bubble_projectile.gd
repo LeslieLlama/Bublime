@@ -17,9 +17,6 @@ func _ready():
 	else:
 		become_extra_pickup()
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 	
 func _set_direction(input_direction):
 	direction = input_direction

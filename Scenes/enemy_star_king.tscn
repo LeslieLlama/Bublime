@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://3ouffd8ttdm8"]
+
+[ext_resource type="PackedScene" uid="uid://bgjcm6jpt5471" path="res://Scenes/Enemy_Rush.tscn" id="1_fomwy"]
+[ext_resource type="Texture2D" uid="uid://ckky31co2hd2f" path="res://Sprites/StarKing-1.png.png" id="2_7my10"]
+[ext_resource type="Script" path="res://Scripts/enemy_star_king.gd" id="2_ogocu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bt88"]
+size = Vector2(182, 183)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u62y4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7my10")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="StarKing" instance=ExtResource("1_fomwy")]
+collision_mask = 1
+script = ExtResource("2_ogocu")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_1bt88")
+
+[node name="Sprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_u62y4")
+frame = 0
+frame_progress = 0.0
+
+[node name="MovementTick" parent="." index="2"]
+wait_time = 1.5
