@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://cmbm5i2wxwi4d"]
+[gd_scene load_steps=22 format=4 uid="uid://cmbm5i2wxwi4d"]
 
 [ext_resource type="PackedScene" uid="uid://xh4wteq4jqc5" path="res://Scenes/player.tscn" id="1_84xqw"]
 [ext_resource type="Script" path="res://Scripts/main_game.gd" id="1_anap5"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dnqvkt8q7njgu" path="res://Scenes/bubble_projectile.tscn" id="7_r3b8w"]
 [ext_resource type="FontFile" uid="uid://c2u6mgva0cwwo" path="res://Pixelout Personal Use Only.ttf" id="7_s3fqj"]
 [ext_resource type="FontFile" uid="uid://ck2g4k8chw7b0" path="res://Daydream.ttf" id="8_ppxw5"]
+[ext_resource type="Texture2D" uid="uid://bmw1pnl0orubg" path="res://Sprites/Pickups.png" id="12_klm0y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yew61"]
 texture = ExtResource("6_5jvg1")
@@ -50,6 +51,9 @@ size = Vector2(2000, 1000)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_52o48"]
 size = Vector2(187, 65)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4w847"]
+size = Vector2(77, 84)
 
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_anap5")
@@ -300,12 +304,26 @@ position = Vector2(2184, 804)
 currentState = 2
 
 [node name="BubbleProjectile3" parent="." instance=ExtResource("7_r3b8w")]
-position = Vector2(-512, -491)
+position = Vector2(-714, -315)
 currentState = 2
 
 [node name="BubbleProjectile4" parent="." instance=ExtResource("7_r3b8w")]
 position = Vector2(-491, -1197)
 currentState = 2
+
+[node name="SpeedPowerup" type="Area2D" parent="."]
+position = Vector2(-513, -493)
+
+[node name="Sprite2D" type="Sprite2D" parent="SpeedPowerup"]
+texture_filter = 1
+scale = Vector2(3.9, 3.9)
+texture = ExtResource("12_klm0y")
+region_enabled = true
+region_rect = Rect2(0, 0, 16.3591, 16.8988)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpeedPowerup"]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_4w847")
 
 [node name="Audio" type="Node" parent="."]
 
@@ -328,3 +346,4 @@ volume_db = -39.045
 [connection signal="body_entered" from="Room6/CameraZone3" to="Room6/CameraZone3" method="_on_body_entered"]
 [connection signal="body_entered" from="Room7/CameraZone3" to="Room7/CameraZone3" method="_on_body_entered"]
 [connection signal="body_entered" from="Room10/CameraZone3" to="Room10/CameraZone3" method="_on_body_entered"]
+[connection signal="body_entered" from="SpeedPowerup" to="." method="speed_powerup_aquired"]

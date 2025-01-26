@@ -40,3 +40,8 @@ func boss_fight_triggered():
 	bossMusic.play()
 	$Door.position = Vector2(1338,-968)
 	
+func speed_powerup_aquired(_body):
+	pop_up_message("Speed Up!", $SpeedPowerup.global_position, Color.YELLOW)
+	Signals.emit_signal("speed_powerup_aquired")
+	$SpeedPowerup.queue_free()
+	

@@ -18,6 +18,7 @@ func _ready():
 	Signals.extra_bubble_collected.connect(collect_extra_bubble)
 	Signals.new_room_entered.connect(reset_bubble_split)
 	Signals.player_damaged.connect(TakeDamage)
+	Signals.speed_powerup_aquired.connect(_player_speed_up)
 	
 	ammoCount = maxAmmoCount
 	sprite2D = $Sprite2D
@@ -40,6 +41,9 @@ func get_shoot_input():
 	if Input.is_action_just_released('fire_down'): input.y += 1 
 	if Input.is_action_just_released('fire_up'): input.y -= 1 
 	return input
+
+func _player_speed_up():
+	speed = 500
 
 func _physics_process(delta): 
 	var direction = get_move_input() 
