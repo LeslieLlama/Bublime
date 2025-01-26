@@ -17,6 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Title" type="Label" parent="DeathScreen"]
+layout_mode = 0
 offset_right = 1000.0
 offset_bottom = 476.0
 theme_override_fonts/font = ExtResource("2_now3c")

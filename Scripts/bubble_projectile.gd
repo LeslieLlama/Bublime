@@ -31,7 +31,7 @@ func _physics_process(delta):
 	#speed = lerp(speed, 0.0, friction)
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
-	if currentState == state.PICKUP:
+	if currentState == state.PICKUP || currentState == state.PROJECTILE:
 		Signals.emit_signal("bubble_collected", position)
 	if currentState == state.EXTRA:
 		Signals.emit_signal("extra_bubble_collected")

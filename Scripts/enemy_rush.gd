@@ -21,6 +21,7 @@ func _assign_player(p : CharacterBody2D):
 
 func _check_for_active(currentArea : Area2D, name : String):
 	if name == active_area:
+		await get_tree().create_timer(1.0).timeout
 		is_active = true
 		print("enemy activated")
 	else: 
@@ -35,7 +36,7 @@ func _check_for_active(currentArea : Area2D, name : String):
 	
 func _movement():
 	if is_active == true:
-		direction = Vector2(position - player.position).normalized()
+		direction = Vector2(global_position - player.global_position).normalized()
 		apply_impulse(-direction * speed, Vector2.ZERO)
 	$MovementTick.start()
 
@@ -43,7 +44,8 @@ func _on_body_entered(body):
 	if body.is_in_group("player"):
 		Signals.emit_signal("player_damaged", -direction)
 	if body.is_in_group("player_bullet"):
-		print(str(health))
+		Signals.emit_signal("popup_message", "-1", position, Color.WHITE)
+		#popup_message(textToSay : String, pos : Vector2, textColour : Color)
 		health -= 1
 		body.apply_impulse(_random_direction() * 300, Vector2.ZERO)
 		#onhit animation here
