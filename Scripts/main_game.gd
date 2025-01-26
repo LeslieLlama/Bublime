@@ -1,11 +1,18 @@
 extends Node2D
 
 @export var fontToUse : FontFile
+var backgroundMusic
+var bossMusic
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Signals.popup_message.connect(pop_up_message)
 	Signals.reload_game.connect(reload_game)
 	Signals.new_room_entered.connect(hide_title)
+	Signals.boss_fight_triggered.connect(boss_fight_triggered)
+	backgroundMusic = $Audio/backgroundMusic
+	bossMusic = $Audio/BossMusic
+	backgroundMusic.play()
 
 
 func pop_up_message(textToSay : String, pos : Vector2, textColour : Color):
@@ -27,3 +34,9 @@ func reload_game():
 func hide_title(_area, name):
 	if name != "Room1":
 		$WorldText/TutorialScreen1/Title.hide()
+		
+func boss_fight_triggered():
+	backgroundMusic.stop()
+	bossMusic.play()
+	$Door.position = Vector2(1338,-968)
+	

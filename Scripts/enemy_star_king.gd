@@ -33,6 +33,16 @@ func _death_check():
 		queue_free()
 		Signals.emit_signal("game_won")
 	
+func _check_for_active(currentArea : Area2D, name : String):
+	if name == active_area:
+		await get_tree().create_timer(1.0).timeout
+		is_active = true
+		print("enemy activated")
+		Signals.emit_signal("boss_fight_triggered")
+	else: 
+		is_active = false
+		
+
 func _bullet_program():
 	if alt_fire == false:
 		for i in 4:

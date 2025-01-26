@@ -8,7 +8,7 @@ var stunTime = 0.5
 @export var bubble_projectile : PackedScene
 
 var ammoCount : int = 0
-var maxAmmoCount : int = 3
+var maxAmmoCount : int = 4
 var is_stunned : bool = false
 
 var sprite2D 
@@ -21,6 +21,7 @@ func _ready():
 	
 	ammoCount = maxAmmoCount
 	sprite2D = $Sprite2D
+	change_size()
 	await get_tree().create_timer(0.01).timeout
 	Signals.emit_signal("get_player", self)
 
@@ -51,50 +52,47 @@ func _physics_process(delta):
 	if shoot_direction.length() > 0:
 		shoot_bubble(shoot_direction)
 
-func change_size(is_plus : bool):
+func change_size():
 	sprite2D.frame = (7-ammoCount) #8 total frames, so starting at 0 it's 7
 	$CollisionShape2D.shape.radius = 15 + (3.5*(ammoCount))
-	if is_plus == true:
-		pass
-	else:
-		pass
 	
 func shoot_bubble(shoot_direction):
+	print(ammoCount)
 	if ammoCount >= 1:
 		var bullet = bubble_projectile.instantiate()
 		$"..".call_deferred("add_child",bullet)
 		bullet.position = position
 		bullet._set_direction(shoot_direction)
 		ammoCount -= 1
-		change_size(false)
+		change_size()
 	else:
 		Signals.emit_signal("popup_message", "Too Small!", position, Color.WHITE)
 
 func collect_bubble(_position):
 	if ammoCount <= maxAmmoCount:
-		change_size(true)
+		change_size()
 		ammoCount += 1
 	
 func collect_extra_bubble():
 	maxAmmoCount += 1
-	change_size(true)
+	change_size()
 	ammoCount += 1
 	Signals.emit_signal("popup_message", "+1 Bubble!", position, Color.WHITE)
 	
 func reset_bubble_split(_area, _room_name):
 	#currently don't need a "kill all" function on the bubble projectiles since they die on screen exit
 	for m in maxAmmoCount-ammoCount:
-		change_size(true)
+		change_size()
 	Signals.emit_signal("get_player", self)
 		
 func TakeDamage(direction_to_move):
 	if is_stunned == true:
 		pass
 	else:
-		if ammoCount > 2:
+		if ammoCount > 3:
 			for i in 3:
 				shoot_bubble(_random_direction())
-		if ammoCount == 1:
+		elif ammoCount == 2 || ammoCount == 1:
 			shoot_bubble(_random_direction())
 		if ammoCount == 0:
 			_death()

@@ -16,14 +16,12 @@ func _ready():
 	
 func _assign_player(p : CharacterBody2D):
 	player = p
-	print("player assigned")
 
 
 func _check_for_active(currentArea : Area2D, name : String):
 	if name == active_area:
 		await get_tree().create_timer(1.0).timeout
 		is_active = true
-		print("enemy activated")
 	else: 
 		is_active = false
 
