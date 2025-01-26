@@ -42,7 +42,7 @@ func _on_body_entered(body):
 	if body.is_in_group("player"):
 		Signals.emit_signal("player_damaged", -direction)
 	if body.is_in_group("player_bullet"):
-		Signals.emit_signal("popup_message", "-1", position, Color.WHITE)
+		Signals.emit_signal("popup_message", "-1", global_position, Color.WHITE)
 		#popup_message(textToSay : String, pos : Vector2, textColour : Color)
 		health -= 1
 		body.apply_impulse(_random_direction() * 300, Vector2.ZERO)
