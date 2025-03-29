@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bgjcm6jpt5471" path="res://Scenes/Enemy_Rush.tscn" id="1_fomwy"]
 [ext_resource type="Texture2D" uid="uid://ckky31co2hd2f" path="res://Sprites/StarKing-1.png.png" id="2_7my10"]
-[ext_resource type="Script" path="res://Scripts/enemy_star_king.gd" id="2_ogocu"]
+[ext_resource type="Script" uid="uid://dx7pwtwx1yjyp" path="res://Scripts/enemy_star_king.gd" id="2_ogocu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bt88"]
 size = Vector2(182, 183)

@@ -1,9 +1,9 @@
 [gd_scene load_steps=22 format=4 uid="uid://cmbm5i2wxwi4d"]
 
 [ext_resource type="PackedScene" uid="uid://xh4wteq4jqc5" path="res://Scenes/player.tscn" id="1_84xqw"]
-[ext_resource type="Script" path="res://Scripts/main_game.gd" id="1_anap5"]
+[ext_resource type="Script" uid="uid://dc1ingd2yn0vs" path="res://Scripts/main_game.gd" id="1_anap5"]
 [ext_resource type="FontFile" uid="uid://c17dgd7xsauyk" path="res://Pixeled.ttf" id="2_rk3q6"]
-[ext_resource type="Script" path="res://Scripts/camera_zone.gd" id="3_1ve3w"]
+[ext_resource type="Script" uid="uid://hfhugrmoeof7" path="res://Scripts/camera_zone.gd" id="3_1ve3w"]
 [ext_resource type="AudioStream" uid="uid://dllbxfi5xv6np" path="res://Audio/722597__vrymaa__sirenae.wav" id="3_srpis"]
 [ext_resource type="AudioStream" uid="uid://d1mre1wkf5lwh" path="res://Audio/628866__lupitac93__underwater-dreams.mp3" id="4_i6si8"]
 [ext_resource type="PackedScene" uid="uid://bgjcm6jpt5471" path="res://Scenes/Enemy_Rush.tscn" id="5_mg160"]

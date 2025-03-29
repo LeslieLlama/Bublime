@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bklio0ygit0n3"]
 
 [ext_resource type="PackedScene" uid="uid://bgjcm6jpt5471" path="res://Scenes/Enemy_Rush.tscn" id="1_u7185"]
-[ext_resource type="Script" path="res://Scenes/projectile_large.gd" id="2_5knqc"]
+[ext_resource type="Script" uid="uid://dl038ammksyi" path="res://Scenes/projectile_large.gd" id="2_5knqc"]
 [ext_resource type="Texture2D" uid="uid://bechkgb7rjswa" path="res://Sprites/ProjectilesLarge-1.png.png" id="2_q1nwy"]
 [ext_resource type="Texture2D" uid="uid://da8nxp8xbuenb" path="res://Sprites/ProjectilesLarge-2.png.png" id="3_exbf3"]
 
