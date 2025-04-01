@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://cmbm5i2wxwi4d"]
+[gd_scene load_steps=23 format=4 uid="uid://cmbm5i2wxwi4d"]
 
 [ext_resource type="PackedScene" uid="uid://xh4wteq4jqc5" path="res://Scenes/player.tscn" id="1_84xqw"]
 [ext_resource type="Script" uid="uid://dc1ingd2yn0vs" path="res://Scripts/main_game.gd" id="1_anap5"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://d1mre1wkf5lwh" path="res://Audio/628866__lupitac93__underwater-dreams.mp3" id="4_i6si8"]
 [ext_resource type="PackedScene" uid="uid://bgjcm6jpt5471" path="res://Scenes/Enemy_Rush.tscn" id="5_mg160"]
 [ext_resource type="Texture2D" uid="uid://crbt2hrmqyxq8" path="res://Sprites/AquaTileSet.png" id="6_5jvg1"]
+[ext_resource type="PackedScene" uid="uid://iw1fmry0t3m4" path="res://Scenes/camera_zone.tscn" id="6_wyocf"]
 [ext_resource type="PackedScene" uid="uid://bklio0ygit0n3" path="res://Scenes/Projectile_large.tscn" id="7_7cjxx"]
 [ext_resource type="PackedScene" uid="uid://3ouffd8ttdm8" path="res://Scenes/enemy_star_king.tscn" id="7_jnb44"]
 [ext_resource type="PackedScene" uid="uid://dnqvkt8q7njgu" path="res://Scenes/bubble_projectile.tscn" id="7_r3b8w"]
@@ -122,30 +123,19 @@ autowrap_mode = 3
 
 [node name="Room1" type="Node2D" parent="."]
 
-[node name="CameraZone1" type="Area2D" parent="Room1"]
-script = ExtResource("3_1ve3w")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Room1/CameraZone1"]
-position = Vector2(502.5, 502)
-shape = SubResource("RectangleShape2D_o0ppl")
-debug_color = Color(1, 0.760784, 0.592157, 0.419608)
+[node name="CameraZone1" parent="Room1" instance=ExtResource("6_wyocf")]
+position = Vector2(-2, 0)
 
 [node name="Enemy" parent="Room1" instance=ExtResource("7_7cjxx")]
 position = Vector2(740, 697)
 
 [node name="Room2" type="Node2D" parent="."]
 
-[node name="CameraZone2" type="Area2D" parent="Room2"]
-position = Vector2(1000, 0)
-script = ExtResource("3_1ve3w")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Room2/CameraZone2"]
-position = Vector2(502.5, 502)
-shape = SubResource("RectangleShape2D_o0ppl")
-debug_color = Color(1, 0.760229, 0.593431, 0.42)
-
 [node name="Enemy" parent="Room2" instance=ExtResource("5_mg160")]
 position = Vector2(1580, 421)
+
+[node name="CameraZone1" parent="Room2" instance=ExtResource("6_wyocf")]
+position = Vector2(998, 0)
 
 [node name="Room11" type="Node2D" parent="."]
 position = Vector2(1000, 0)
@@ -335,8 +325,6 @@ volume_db = -10.0
 stream = ExtResource("4_i6si8")
 volume_db = -39.045
 
-[connection signal="body_entered" from="Room1/CameraZone1" to="Room1/CameraZone1" method="_on_body_entered"]
-[connection signal="body_entered" from="Room2/CameraZone2" to="Room2/CameraZone2" method="_on_body_entered"]
 [connection signal="body_entered" from="Room11/CameraZone2" to="Room11/CameraZone2" method="_on_body_entered"]
 [connection signal="body_entered" from="Room3/CameraZone3" to="Room3/CameraZone3" method="_on_body_entered"]
 [connection signal="body_entered" from="Room4/CameraZone2" to="Room4/CameraZone2" method="_on_body_entered"]

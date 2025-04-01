@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://c17dgd7xsauyk" path="res://Pixeled.ttf" id="4_cyncx"]
 
 [node name="UI" type="CanvasLayer"]
+visible = false
 script = ExtResource("1_81kql")
 
 [node name="FadeIn" type="ColorRect" parent="."]
