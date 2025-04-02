@@ -3,8 +3,8 @@ extends Node
 
 signal bubble_collected(position : Vector2)
 signal extra_bubble_collected()
-signal new_room_entered(area2d : Area2D)
-signal room_entered(area2d : Area2D)
+signal new_room_entered(area2d : Area2D, name : String)
+#signal room_entered(area2d : Area2D)
 signal room_exited(area2D : Area2D)
 signal popup_message(textToSay : String, pos : Vector2, textColour : Color)
 signal player_damaged(direction_to_push : Vector2)

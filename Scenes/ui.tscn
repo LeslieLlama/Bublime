@@ -6,10 +6,10 @@
 [ext_resource type="FontFile" uid="uid://c17dgd7xsauyk" path="res://Pixeled.ttf" id="4_cyncx"]
 
 [node name="UI" type="CanvasLayer"]
-visible = false
 script = ExtResource("1_81kql")
 
 [node name="FadeIn" type="ColorRect" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -63,6 +63,34 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Credits2" type="Label" parent="GameWonScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -322.0
+offset_top = 50.5
+offset_right = 482.0
+offset_bottom = 578.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.0901961, 0.356863, 0.529412, 1)
+theme_override_fonts/font = ExtResource("4_cyncx")
+theme_override_font_sizes/font_size = 20
+text = "fonts:
+Pixeled - omegapc777
+Daydream - DoubleGum
+Pixelout - ilhamtaro
+music: 
+Sirenae by Vrymaa 
+Underwater Dreams by lupitac93
+
+"
+horizontal_alignment = 2
+autowrap_mode = 3
+
 [node name="Label" type="Label" parent="GameWonScreen"]
 layout_mode = 1
 anchors_preset = 8
@@ -71,9 +99,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -404.0
-offset_top = -374.0
+offset_top = -432.0
 offset_right = 400.0
-offset_bottom = -87.0
+offset_bottom = -145.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_yaonp")
@@ -91,9 +119,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -404.0
-offset_top = 35.0
+offset_top = -20.0
 offset_right = 400.0
-offset_bottom = 322.0
+offset_bottom = 267.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_yaonp")
@@ -120,32 +148,4 @@ theme_override_font_sizes/font_size = 20
 text = "A game by  Leslie Llama
 
 "
-autowrap_mode = 3
-
-[node name="Credits2" type="Label" parent="GameWonScreen"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -322.0
-offset_top = 80.0
-offset_right = 482.0
-offset_bottom = 549.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.0901961, 0.356863, 0.529412, 1)
-theme_override_fonts/font = ExtResource("4_cyncx")
-theme_override_font_sizes/font_size = 20
-text = "fonts:
-Pixeled - omegapc777
-Daydream - DoubleGum
-Pixelout - ilhamtaro
-music: 
-Sirenae by Vrymaa 
-Underwater Dreams by lupitac93
-
-"
-horizontal_alignment = 2
 autowrap_mode = 3

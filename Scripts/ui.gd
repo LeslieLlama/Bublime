@@ -5,6 +5,7 @@ var player_is_dead : bool
 func _ready():
 	Signals.player_dead.connect(_player_has_died)
 	Signals.game_won.connect(_game_has_been_won)
+	$FadeIn.visible = true
 	await get_tree().create_timer(0.01).timeout
 	_fade_color(true)
 	

@@ -31,8 +31,8 @@ func pop_up_message(textToSay : String, pos : Vector2, textColour : Color):
 func reload_game():
 	get_tree().reload_current_scene()
 	
-func hide_title(_area, name):
-	if name != "Room1":
+func hide_title(_area, _name):
+	if _name != "Room1":
 		$WorldText/TutorialScreen1/Title.hide()
 		
 func boss_fight_triggered():
@@ -41,7 +41,7 @@ func boss_fight_triggered():
 	$Door.position = Vector2(1338,-968)
 	
 func speed_powerup_aquired(_body):
-	pop_up_message("Speed Up!", $SpeedPowerup.global_position, Color.YELLOW)
+	pop_up_message("Speed Up!", $Room4/SpeedPowerup.global_position, Color.YELLOW)
 	Signals.emit_signal("speed_powerup_aquired")
-	$SpeedPowerup.queue_free()
+	$Room4/SpeedPowerup.queue_free()
 	

@@ -4,7 +4,7 @@ var new_area : Area2D
 var current_area : Area2D
 
 func _ready():
-	Signals.room_entered.connect(_on_new_room_entered)
+	Signals.new_room_entered.connect(_on_new_room_entered)
 	Signals.room_exited.connect(_on_room_exited)
 
 #func _on_new_room_entered(area: Area2D, _room_name) -> void:
@@ -26,7 +26,7 @@ func _ready():
 	#limit_right = limit_left + size.x
 
 
-func _on_new_room_entered(area: Area2D) -> void:
+func _on_new_room_entered(area: Area2D, _name) -> void:
 	new_area = area
 	#set camera bounds on inital spawn in
 	if current_area == null:
